@@ -20,15 +20,15 @@ NEWSPIDER_MODULE = 'vpn_txt.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 64
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+#DOWNLOAD_DELAY = 0.3
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 32
+CONCURRENT_REQUESTS_PER_IP = 32
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -86,3 +86,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+LOG_LEVEL='ERROR'
+LOG_FILE='./all.log'
+HTTPERROR_ALLOWED_CODES = [403,404,500,502,503,504,505]
