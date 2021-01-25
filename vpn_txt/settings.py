@@ -63,7 +63,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'vpn_txt.pipelines.VpnTxtPipeline': 300,
+    'vpn_txt.pipelines.VpnTxtPipeline': 300,
+    'crawlab.pipelines.CrawlabMongoPipeline': 888,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -86,7 +87,9 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
-LOG_LEVEL='ERROR'
-LOG_FILE='./all.log'
+import datetime
+LOG_LEVEL='WARNING'
+to_day=datetime.datetime.now()
+logo_file_path=r"log/scrapy_{}.{}.{}.log".format(to_day.year,to_day.month,to_day.day)
+LOG_FILE=logo_file_path
 HTTPERROR_ALLOWED_CODES = [403,404,500,502,503,504,505]

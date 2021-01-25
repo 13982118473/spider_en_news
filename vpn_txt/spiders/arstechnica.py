@@ -13,14 +13,17 @@ class ArstechnicaSpider(scrapy.Spider):
             yield scrapy.Request(response.urljoin(category_url),callback=self.category_parse)
 
     def category_parse(self,response):
+        #列表页解析
         info_url_list = response.xpath("//section[@class='with-xrail']//li[@class='tease article ']/a/@href").extract()
         for info_url in info_url_list:
             time.sleep(random.uniform(0.2,0.8))
             yield scrapy.Request(response.urljoin(info_url),callback=self.info_parse)
+        #翻页解析
         next_url=response.xpath("//a[@class='load-more' or @class='left']/@href").extract_first()
         yield scrapy.Request(response.urljoin(next_url), callback=self.category_parse)
 
     def info_parse(self,response):
+        #详情页解析
         item=VpnTxtItem()
         try:
             item["keyword"] = re.findall('"keywords":"(.*?)"', response.text)[0]

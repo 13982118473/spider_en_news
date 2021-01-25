@@ -14,4 +14,5 @@ from config import sql_date
 #
 # db=conn.vpn_txt
 # db.hl.insert_one()
-time.sleep(random.uniform(0.5,1.2))
+# time.sleep(random.uniform(0.5,1.2))
+print(time.strftime('%Y.%m.%d-%H:%M:%S'))
