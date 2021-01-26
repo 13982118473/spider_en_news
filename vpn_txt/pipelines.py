@@ -10,11 +10,11 @@ from config import sql_date
 import pymongo,time,logging
 
 class VpnTxtPipeline:
-    def open_spider(self, spider):
+    #def open_spider(self, spider):
         # self.conn = pymongo.MongoClient('mongodb://{}:{}@{}:{}/?authSource={}'.format(sql_date["user"],sql_date["passwd"], sql_date["host"],sql_date["port"],sql_date["authSource"]))
         # self.db=self.conn[sql_date["datebase_name"]]
         # self.page_num=0
-        logging.warning('启动爬虫')
+        #logging.warning('启动爬虫')
     def process_item(self, item, spider):
         # #检查数据库是否已有该数据
         # if self.db[sql_date["set_name"]].count({'title': item['title']}) ==0:
@@ -26,7 +26,7 @@ class VpnTxtPipeline:
         #     else:pass
         return item
 
-    def close_spider(self, spider):
-        #self.conn.close()
-        # logging.warning('爬虫关闭,共爬取到:'+str(self.page_num)+'条数据')
-        print('********爬取完毕********')
+    # def close_spider(self, spider):
+    #     #self.conn.close()
+    #     # logging.warning('爬虫关闭,共爬取到:'+str(self.page_num)+'条数据')
+    #     print('********爬取完毕********')
