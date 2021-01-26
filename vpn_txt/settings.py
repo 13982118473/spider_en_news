@@ -87,8 +87,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-import datetime
-LOG_LEVEL='WARNING'
+#LOG_LEVEL='WARNING'
 # to_day=datetime.datetime.now()
 # logo_file_path=r"/var/logs/crawlab/scrapy_{}.{}.{}.log".format(to_day.year,to_day.month,to_day.day)
 # LOG_FILE=logo_file_path
