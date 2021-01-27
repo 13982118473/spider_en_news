@@ -38,7 +38,7 @@ CONCURRENT_REQUESTS_PER_IP = 32
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
   'Accept-Language': 'en',
 }
 
@@ -63,7 +63,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'vpn_txt.pipelines.VpnTxtPipeline': 300,
+    #'vpn_txt.pipelines.VpnTxtPipeline': 300,
+    'crawlab.pipelines.CrawlabMongoPipeline': 888,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -86,7 +87,8 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-
-LOG_LEVEL='ERROR'
-LOG_FILE='./all.log'
+#LOG_LEVEL='WARNING'
+# to_day=datetime.datetime.now()
+# logo_file_path=r"/var/logs/crawlab/scrapy_{}.{}.{}.log".format(to_day.year,to_day.month,to_day.day)
+# LOG_FILE=logo_file_path
 HTTPERROR_ALLOWED_CODES = [403,404,500,502,503,504,505]
