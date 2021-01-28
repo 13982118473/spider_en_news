@@ -11,16 +11,22 @@
 
 文件说明:
     vpn_txt:项目根目录
-        --all.log(日志文件)
-        --config.py(配置文件)
         --vpn_txt(爬虫目录)
             --middlewares.py (爬虫中间件)
-            --pipelines.py   (爬虫管道,存储)
+            --pipelines.py   (爬虫管道,自定义存储)
             --settings.py    (爬虫设置,并发数,延迟)
             --items.py       (数据模型)
             --spiders        (爬虫规则目录)
                 arstechnica.py (https://arstechnica.com/爬取规则)
 
+项目说明:
+    本项目为crawlab上运行scrapy爬虫
+    在./vpn_txt/settings.py文件里,将 crawlab入库管道: {'crawlab.pipelines.CrawlabMongoPipeline': 888} 添加到: ITEM_PIPELINES 里
+    上传到crawlab后:
+        定义为:scrapy爬虫
+        去重选择:覆盖方式,去重字段:url
+        日志等级:WARNING
+
 启动命令:
-    跟目录运行指令:scrapy crawl arstechnica
+    scrapy crawl {spider_name}
 
