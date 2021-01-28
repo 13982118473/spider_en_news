@@ -6,8 +6,8 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-from config import sql_date
-import pymongo,time,logging
+#from config import sql_date
+#import pymongo,time,logging
 
 class VpnTxtPipeline:
     #def open_spider(self, spider):

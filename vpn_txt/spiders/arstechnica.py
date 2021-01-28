@@ -8,7 +8,6 @@ class ArstechnicaSpider(scrapy.Spider):
     start_urls = ['http://arstechnica.com/']
 
     def __init__(self):
-        # 在初始化时，创建driver
         super(ArstechnicaSpider, self).__init__(name='arstechnica')
         self.page=0
         print('scrapy-arstechnica抓取启动')

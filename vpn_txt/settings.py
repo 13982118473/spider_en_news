@@ -20,15 +20,14 @@ NEWSPIDER_MODULE = 'vpn_txt.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS = 64
-
+CONCURRENT_REQUESTS = 100
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY = 0.3
 # The download delay setting will honor only one of:
-CONCURRENT_REQUESTS_PER_DOMAIN = 32
-CONCURRENT_REQUESTS_PER_IP = 32
+CONCURRENT_REQUESTS_PER_DOMAIN = 100
+CONCURRENT_REQUESTS_PER_IP = 100
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -38,7 +37,7 @@ CONCURRENT_REQUESTS_PER_IP = 32
 
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
-  # 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
   'Accept-Language': 'en',
 }
 
@@ -63,8 +62,8 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    #'vpn_txt.pipelines.VpnTxtPipeline': 300,
-    'crawlab.pipelines.CrawlabMongoPipeline': 888,
+    #'vpn_txt.pipelines.VpnTxtPipeline': 300,        #开启手动入库管道
+    'crawlab.pipelines.CrawlabMongoPipeline': 888,  #crawlab入库管道
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -87,7 +86,8 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-#LOG_LEVEL='WARNING'
+
+LOG_LEVEL='WARNING'
 # to_day=datetime.datetime.now()
 # logo_file_path=r"/var/logs/crawlab/scrapy_{}.{}.{}.log".format(to_day.year,to_day.month,to_day.day)
 # LOG_FILE=logo_file_path

@@ -10,12 +10,3 @@
 #     "set_name":"shiyan"
 # }
 
-sql_date={
-    "host": "127.0.0.1",  # 域名
-    "port": "27017",  # 端口
-    "user": "root",  # 用户名
-    "passwd": "66884747",  # 密码
-    "authSource":"admin",
-    "datebase_name":"huliang",
-    "set_name":"shiyan"
-}
