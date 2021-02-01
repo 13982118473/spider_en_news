@@ -11,8 +11,11 @@ class CbcSpider(CrawlSpider):
     def __init__(self):
         super(CbcSpider, self).__init__(name='cbc')
         self.page=0
-    rules = (Rule(LinkExtractor(allow=r'/news/.*'), callback='parse_item', follow=True),)
-    rules = (Rule(LinkExtractor(allow=r'/sports/.*'), callback='parse_item', follow=True),)
+    rules = (
+             Rule(LinkExtractor(allow=r'/news/.*'),   callback='parse_item', follow=True),
+             Rule(LinkExtractor(allow=r'/sports/.*'), callback='parse_item', follow=True),
+             )
+
     def parse_item(self, response):
         item = VpnTxtItem()
         item['url'] = response.url
@@ -32,7 +35,7 @@ class CbcSpider(CrawlSpider):
         if item['title'] is not None and len(item['content']) >= 50:
             self.page += 1
             print(time.strftime('%Y.%m.%d-%H:%M:%S'),'第',self.page,'条抓取成功,url:', item['url'])
-            time.sleep(random.uniform(0.2, 0.7))
+            time.sleep(random.uniform(0.2, 0.8))
             return item
     def close(spider, reason):
         print('scrapy-arstechnica抓取完成,共抓取:',spider.page,'条数据')
