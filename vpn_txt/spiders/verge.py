@@ -2,7 +2,7 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from ..items import VpnTxtItem
-import time,re,random,json
+import time,random
 
 class VergeSpider(CrawlSpider):
     name = 'verge'
@@ -14,19 +14,16 @@ class VergeSpider(CrawlSpider):
     rules = (
              # Rule(LinkExtractor(allow=r'/news/.*'),   callback='parse_item', follow=True),
              # Rule(LinkExtractor(allow=r'/sports/.*'), callback='parse_item', follow=True),
-             Rule(LinkExtractor(allow=r'https://www.theverge.com/.*'),follow=True),
-             Rule(LinkExtractor(allow=r'https://www.theverge.com/\d+/\d+/\d+/\d+/.*'), callback='parse_item', follow=False),
+             Rule(LinkExtractor(allow=r'https://www.theverge.com/\d+/\d+/\d+/\d+/.*'), callback='parse_item', follow=True),
              )
 
     def parse_item(self, response):
-
-
         item = VpnTxtItem()
         item['url'] = response.url
         item['status'] = 1
         item["creat_time"] = time.time()
         try:
-            item['keyword']=response.xpath("//meta[@name='parsely-tags']/@content").extract()[0].replace(',', '')
+            item['keyword']=response.xpath("//meta[@name='parsely-tags']/@content").extract()[0].replace(',', '|').replace('verge|front-page|','')
         except Exception:
             item['keyword'] = ''
         try:
@@ -36,8 +33,7 @@ class VergeSpider(CrawlSpider):
             pass
         if item['title'] is not None and len(item['content']) >= 50:
             self.page += 1
-            print(time.strftime('%Y.%m.%d-%H:%M:%S'), item)
-            #print(time.strftime('%Y.%m.%d-%H:%M:%S'),'第',self.page,'条抓取成功,url:', item['url'])
+            print(time.strftime('%Y.%m.%d-%H:%M:%S'),'第',self.page,'条抓取成功,url:', item['url'])
             time.sleep(random.uniform(0.2, 0.8))
             return item
     def close(spider, reason):
