@@ -34,7 +34,7 @@ class VergeSpider(CrawlSpider):
         if item['title'] is not None and len(item['content']) >= 50:
             self.page += 1
             print(time.strftime('%Y.%m.%d-%H:%M:%S'),'第',self.page,'条抓取成功,url:', item['url'])
-            time.sleep(random.uniform(0.2, 0.8))
+            time.sleep(random.uniform(0.5, 0.1))
             return item
     def close(spider, reason):
         print('scrapy-arstechnica抓取完成,共抓取:',spider.page,'条数据')

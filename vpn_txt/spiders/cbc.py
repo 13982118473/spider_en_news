@@ -2,7 +2,7 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from ..items import VpnTxtItem
-import time,re,random,json
+import time,random,json
 
 class CbcSpider(CrawlSpider):
     name = 'cbc'
@@ -39,3 +39,4 @@ class CbcSpider(CrawlSpider):
             return item
     def close(spider, reason):
         print('scrapy-arstechnica抓取完成,共抓取:',spider.page,'条数据')
+        ##self.crawler.engine.close_spider(self, "关闭spider")
