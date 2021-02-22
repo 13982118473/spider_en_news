@@ -17,16 +17,23 @@
             --settings.py    (爬虫设置,并发数,延迟)
             --items.py       (数据模型)
             --spiders        (爬虫规则目录)
-                arstechnica.py (https://arstechnica.com/爬取规则)
+                arstechnica.py (https://www.arstechnica.com/爬取规则)
+                cbc.py          (https://www.cbc.com/爬取规则)
+                napost.py       (https://www.napost.com/爬取规则)
+                politico        (https://www.politico.com/爬取规则)
+                verge.py        (https://www.verge.com/爬取规则)
+                get_keyword.py  (google关键字爬取规则)
 
 项目说明:
     本项目为crawlab上运行scrapy爬虫
     在./vpn_txt/settings.py文件里,将 crawlab入库管道: {'crawlab.pipelines.CrawlabMongoPipeline': 888} 添加到: ITEM_PIPELINES 里
     上传到crawlab后:
         定义为:scrapy爬虫
-        去重选择:覆盖方式,去重字段:url
+        去重选择:覆盖方式,去重字段:title
         日志等级:WARNING
 
-启动命令:
+新闻文章启动命令:
     scrapy crawl {spider_name}
 
+Google关键字启动命令:
+    scrapy crawl get_keyword -a keyword_start=key1,key2,key3 
