@@ -13,5 +13,13 @@ class VpnTxtItem(scrapy.Item):
     keyword = scrapy.Field()
     content = scrapy.Field()
     url     = scrapy.Field()
+    status  = scrapy.Field()
     creat_time = scrapy.Field()
-    status  =scrapy.Field()
+
+class GetKeywordItem(scrapy.Item):
+    keyword_start =scrapy.Field()
+    keyword_result=scrapy.Field()
+    keyword_sum   =scrapy.Field()
+    status        =scrapy.Field()
+    creat_time    =scrapy.Field()
+
