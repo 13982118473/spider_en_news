@@ -2,7 +2,7 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from ..items import VpnTxtItem
-import time,random,json
+import time,random
 
 class PoliticoEu_Spider(CrawlSpider):
     name = 'politico_eu'
@@ -25,6 +25,7 @@ class PoliticoEu_Spider(CrawlSpider):
     rules = (
              Rule(LinkExtractor(allow=r'https://www.politico.eu/article/.*'),   callback='parse_item', follow=True),
              Rule(LinkExtractor(allow=r'https://www.politico.eu/.*/page/.*'), callback='parse_item', follow=True)
+
              )
 
     def parse_item(self, response):
