@@ -2,7 +2,7 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from ..items import VpnTxtItem
-import time,random
+import time,random,json
 
 class PoliticoEu_Spider(CrawlSpider):
     name = 'politico_eu'
