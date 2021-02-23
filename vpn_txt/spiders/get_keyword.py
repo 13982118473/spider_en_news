@@ -12,6 +12,7 @@ class GetKeyword(scrapy.Spider):
         'Accept-Language':'en;q=0.8',
         'referer':'https://www.google.com.hk/'
     }
+    item = GetKeywordItem()
     proxy=None
     def __init__(self,keyword_start='',*args, **kwargs):
         super(GetKeyword, self).__init__(name='get_keyword',*args, **kwargs)
@@ -35,7 +36,7 @@ class GetKeyword(scrapy.Spider):
             print('未检查到代理IP,准备获取接口......')
             for args in self.args_list:
                 print(time.strftime('%Y.%m.%d-%H:%M:%S'),'正在获取:', args)
-                time.sleep(3)
+                time.sleep(1)
                 yield scrapy.Request('https://www.google.com.hk/complete/search?q={}&cp=1&client=psy-ab&xssi=t&gs_ri=gws-wiz&hl=en&authuser=0'.format(args), callback=self.api_parse)
 
     def parse(self,response):
@@ -127,16 +128,8 @@ class GetKeyword(scrapy.Spider):
     def errback(self,failure):
         print('-----错误',failure)
     def close(self, reason):
-        item=GetKeywordItem()
-        keyword=self.keyword
-        item['keyword_start']=self.keyword_start
-        item['keyword_result'] = keyword
-        item['keyword_sum'] = len(keyword)
-        item['status'] = 1
-        item['creat_time'] = time.time()
-        print(item)
-        if item['keyword_sum'] >=500:
-            return item
+        print(time.strftime('%Y.%m.%d-%H:%M:%S'), '抓取结束')
+
 
 #如果无代理,只获取接口
     def api_parse(self,response):
@@ -151,6 +144,13 @@ class GetKeyword(scrapy.Spider):
                 key_wd.append(key)
         for key2 in key_wd:
             if len(self.keyword) >= random.randint(count_number*850-count_number*250,count_number*1000+count_number*200):
+                keyword = self.keyword
+                self.item['keyword_start'] = self.keyword_start
+                self.item['keyword_result'] = ','.join(keyword)
+                self.item['keyword_sum'] = len(keyword)
+                self.item['status'] = 1
+                self.item['creat_time'] = time.time()
+                yield self.item
                 self.crawler.engine.close_spider(self)
             else:
                 print(time.strftime('%Y.%m.%d-%H:%M:%S'), '正在获取:', key2)
