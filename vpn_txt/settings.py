@@ -63,7 +63,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     #'vpn_txt.pipelines.VpnTxtPipeline': 300,        #开启手动入库管道
-    'crawlab.pipelines.CrawlabMongoPipeline': 888,  #crawlab入库管道
+    #'crawlab.pipelines.CrawlabMongoPipeline': 888,  #crawlab入库管道
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -91,4 +91,4 @@ LOG_LEVEL='WARNING'
 # to_day=datetime.datetime.now()
 # logo_file_path=r"/var/logs/crawlab/scrapy_{}.{}.{}.log".format(to_day.year,to_day.month,to_day.day)
 # LOG_FILE=logo_file_path
-HTTPERROR_ALLOWED_CODES = [403,404,500,502,503,504,505]
+HTTPERROR_ALLOWED_CODES = [403,404,429,500,502,503,504,505]

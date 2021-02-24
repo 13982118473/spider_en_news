@@ -18,22 +18,22 @@ sql_date={
     "user": "root",  # 用户名
     "passwd": "66884747",  # 密码
     "authSource":"admin",
-    "datebase_name":"huliang",
-    "set_name":"shiyan"
+    # "datebase_name":"huliang",
+    # "set_name":"shiyan"
 }
 #连接mongod本地的服务
 #conn = pymongo.MongoClient('mongodb://{}:{}@{}:{}/?authSource={}'.format("tiupuqg9erb64koe","ckhrde3cqe7ck817","154.212.112.247","17027","admin"))
 # mongo_py=pymongo.MongoClient('127.0.0.1',27017)
-conn = pymongo.MongoClient('mongodb://{}:{}@{}:{}/?authSource={}'.format(sql_date["user"],sql_date["passwd"], sql_date["host"],sql_date["port"],sql_date["authSource"]))
+#conn = pymongo.MongoClient('mongodb://{}:{}@{}:{}/?authSource={}'.format(sql_date["user"],sql_date["passwd"], sql_date["host"],sql_date["port"],sql_date["authSource"]))
 
 #建立新数据库
-db=conn['huliang']
+#db=conn['crawlab_test']
 #连接数据库
 # db = conn.vpn_txt
 # print(db.stats())
 
 # #建立表
-biao = db['shiyan']
+#biao = db['results_newspaper_txt']
 
 # date_list=biao.count({'title':''})
 # print(type(date_list))
@@ -70,8 +70,8 @@ biao = db['shiyan']
 # biao.update_many({"name":'李四'},{'$set':{"name":'王五五'}})
 #
 # #查询：
-data = biao.find()
-for i in data:
-    print(i)
+# data = biao.find()
+# for i in data:
+#     print(i)
 # #关闭数据库
 # mongo_py.close()
