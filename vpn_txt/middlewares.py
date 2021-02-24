@@ -145,7 +145,8 @@ class VpnTxtDownloaderMiddleware:
             "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; TencentTraveler 4.0)",
             "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/6.2.4094.1 Safari/537.36",
             "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; rv:11.0) like Gecko",
-            "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)"]
+            "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; 360SE)"
+]
         UA = random.choice(UA_list)
         # 设置给request请求头
         request.headers['User-Agent'] = UA
