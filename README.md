@@ -23,8 +23,9 @@
                 arstechnica.py (https://www.arstechnica.com/爬取规则)
                 cbc.py          (https://www.cbc.com/爬取规则)
                 napost.py       (https://www.napost.com/爬取规则)
-                politico        (https://www.politico.com/爬取规则)
+                politico.py     (https://www.politico.com/爬取规则)
                 verge.py        (https://www.verge.com/爬取规则)
+                politico_eu.py  (https://www.politico.eu./爬取规则)
                 get_keyword.py  (google关键字爬取规则)
 
 
