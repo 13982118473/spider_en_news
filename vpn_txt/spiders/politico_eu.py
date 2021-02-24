@@ -25,7 +25,6 @@ class PoliticoEu_Spider(CrawlSpider):
     rules = (
              Rule(LinkExtractor(allow=r'https://www.politico.eu/article/.*'),   callback='parse_item', follow=True),
              Rule(LinkExtractor(allow=r'https://www.politico.eu/.*/page/.*'), callback='parse_item', follow=True)
-
              )
 
     def parse_item(self, response):
